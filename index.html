@@ -5,6 +5,9 @@
 <title>Geolocation</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src='main.js'></script>
+
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
@@ -42,52 +45,5 @@
 
 <div id='map'></div>
 
-<script>
-L.mapbox.accessToken = 'pk.eyJ1Ijoic2hlbGRvbmxpbmUiLCJhIjoiRVRIYlNIYyJ9.3hMiE63z6mxyBBPe1-mxiQ';
-var geolocate = document.getElementById('geolocate');
-var map = L.mapbox.map('map', 'sheldonline.10ac597b', {zoomControl: false}).addControl(L.mapbox.geocoderControl('mapbox.places',{
-        keepOpen: true
-    }));
-;
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
-
-var myLayer = L.mapbox.featureLayer().addTo(map);
-
-if (!navigator.geolocation) {
-    geolocate.innerHTML = 'Geolocation is not available';
-} else {
-    window.onload = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        map.locate();
-    };
-}
-
-map.on('locationfound', function(e) {
-    map.fitBounds(e.bounds);
-
-    myLayer.setGeoJSON({
-        type: 'Feature',
-        geometry: {
-            type: 'Point',
-            coordinates: [e.latlng.lng, e.latlng.lat]
-        },
-        properties: {
-            'title': 'Current location',
-            'marker-color': '#ff8888',
-            'marker-symbol': 'star'
-        }
-    });
-
-    // And hide the geolocation button
-    geolocate.parentNode.removeChild(geolocate);
-});
-
-// If the user chooses not to allow their location
-// to be shared, display an error message.
-map.on('locationerror', function() {
-    geolocate.innerHTML = 'Position could not be found';
-});
-</script>
 </body>
 </html>
