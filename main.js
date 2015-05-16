@@ -76,6 +76,24 @@ $(document).ready(function() {
         $(types).each(function(index, type) {
             $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name, function(data) {
                 var featureLayer = L.mapbox.featureLayer();
+                for (var i = 0; i < data.features.length; i++) {
+                    var properties = data.features[i].properties;
+                    properties.icon = {
+                        "iconUrl": "img/" + type.name + ".png",
+                        "iconSize": [30, 38.51],
+                        "iconAnchor": [15, 38.51],
+                        "popupAnchor": [0, -38.51],
+                        "className": "dot"
+                    }
+                };
+
+                // Set a custom icon on each marker based on feature properties.
+                featureLayer.on('layeradd', function(e) {
+                    var marker = e.layer,
+                        feature = marker.feature;
+                    marker.setIcon(L.icon(feature.properties.icon));
+                });
+                
                 featureLayer.setGeoJSON(data);
                 addLayer(featureLayer, type.name, index + 2);
             })
