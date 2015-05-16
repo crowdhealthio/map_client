@@ -44,7 +44,15 @@ map.on('locationfound', function(e) {
 map.on('locationerror', function() {
     geolocate.innerHTML = 'Position could not be found';
 });
+var featureLayer1;
+var featureLayer2;
 $.getJSON("william-and-mary-notable-trees-map.geojson", function(data) {
-  L.mapbox.featureLayer(data).addTo(map);
+  featureLayer1 = L.mapbox.featureLayer(data).addTo(map);
 });
+
+$.getJSON("water-features.geojson", function(data) {
+  featureLayer2 = L.mapbox.featureLayer(data).addTo(map);
+});
+
+
 });
