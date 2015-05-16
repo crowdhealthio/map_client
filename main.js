@@ -39,19 +39,57 @@ map.on('locationfound', function(e) {
     // And hide the geolocation button
 });
 
+var myIcon = L.icon({
+    iconUrl: 'img/mapicon.png',
+    iconRetinaUrl: 'img/mapicon.png',
+    iconSize: [30, 38.51],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    // shadowUrl: 'my-icon-shadow.png',
+    // shadowRetinaUrl: 'my-icon-shadow@2x.png',
+    shadowSize: [68, 95],
+    shadowAnchor: [22, 94]
+});
+
+
+var featureLayer1 = L.mapbox.featureLayer()
+var featureLayer2 = L.mapbox.featureLayer()
+var featureLayer3 = L.mapbox.featureLayer()
+
+// Set a custom icon on each marker based on feature properties.
+featureLayer1.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+        console.log(feature);
+    marker.setIcon(L.icon(feature.properties.icon));
+});
+
+// featureLayer2.on('layeradd', function(e) {
+//     var marker = e.layer,
+//         feature = marker.feature;
+//     console.log(feature);
+//     marker.setIcon(L.icon(feature.properties.icon));
+// });
+
+// featureLayer3.on('layeradd', function(e) {
+//     var marker = e.layer,
+//         feature = marker.feature;
+//     marker.setIcon(L.icon(feature.properties.icon));
+// });
+
 $.getJSON("william-and-mary-notable-trees-map.geojson", function(data) {
-  // L.mapbox.featureLayer(data);
-  addLayer(L.mapbox.featureLayer(data), 'Notable Trees', 2);
+  featureLayer1.setGeoJSON(data);
+  addLayer(featureLayer1, 'Notable Trees', 2);
 });
 
 $.getJSON("water-features.geojson", function(data) {
-  // L.mapbox.featureLayer(data);
-  addLayer(L.mapbox.featureLayer(data), 'Water Features', 3);
+  featureLayer2.setGeoJSON(data);
+  addLayer(featureLayer2, 'Water Features', 3);
 });
 
 $.getJSON("http://crowdhealth.herokuapp.com/api/v1/artifacts", function(data) {
-  // L.mapbox.featureLayer(data);
-  addLayer(L.mapbox.featureLayer(data), 'Test', 4);
+  featureLayer3.setGeoJSON(data);
+  addLayer(featureLayer3, 'Health', 4);
 });
 
 

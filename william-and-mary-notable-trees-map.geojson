@@ -11,7 +11,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "STREET TREES<br>Governor’s Palace Green <br>Colonial Williamsburg Foundation's Historic Area <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=775"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=775",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -24,7 +31,14 @@
 			"styleUrl": "#icon-ci-1",
 			"styleHash": "-1846bb07",
 			"description": "SPECIMEN TREE<br>Williamsburg Inn <br>506 N Henry Street <br>State Champion <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=771"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=771",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -37,7 +51,14 @@
 			"styleUrl": "#icon-ci-1",
 			"styleHash": "-1846bb07",
 			"description": "SPECIMEN TREE<br>Williamsburg Inn <br>506 N Henry Street <br>757.565.3970 <br>State Champion <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=795"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=795",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -50,7 +71,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "HERITAGE TREES<br>Cedar Grove Cemetery <br>S Henry Street<br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=773"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=773",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -63,7 +91,14 @@
 			"styleUrl": "#icon-ci-1",
 			"styleHash": "-1846bb07",
 			"description": "SPECIMEN TREE<br>Bicentennial Park <br>Court Street <br>State Champion <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=780"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=780",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -76,7 +111,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "SPECIMEN TREE<br>Bicentennial Park <br>Court Street <br>Note the corkscrew bend in the lower left. Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=803"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=803",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -89,7 +131,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "SPECIMEN TREE <br>Cedar Grove Cemetery <br>S Henry Street <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=802"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=802",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -102,7 +151,14 @@
 			"styleUrl": "#icon-ci-1",
 			"styleHash": "-1846bb07",
 			"description": "SPECIMEN TREE<br>Intersection of N Henry & Lafayette Streets <br>State Champion <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=774"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=774",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -115,7 +171,14 @@
 			"styleUrl": "#icon-ci-2",
 			"styleHash": "-61aea105",
 			"description": "SPECIMEN TREE<br>Market Square near St. George Tucker House<br>Colonial Williamsburg Foundation's Historic Area <br>State Champion <br>National Champion <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=805"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=805",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -128,7 +191,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "SPECIMEN TREE<br>Nelson-Galt House <br>Shields Tavern <br>409 E Duke of Gloucester Street <br>Colonial Williamsburg Foundation's Historic Area <br>This magnolia can be seen on aerial photographs prior to re-construction. <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=789"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=789",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -141,7 +211,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "STREET TREES<br>Colonial Williamsburg Foundation's Historic Area <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=797"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=797",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -154,7 +231,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "STREET TREES<br>Botetourt Street<br>Colonial Williamsburg Foundation's Historic Area <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=807"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=807",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -167,7 +251,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "STREET TREES<br>Intersection of York, Page & Lafayette Streets <br>Designated 6.10.10",
-			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=801"
+			"gx_media_links": "http://www.williamsburgva.gov/Modules/ShowImage.aspx?imageid=801",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -180,7 +271,14 @@
 			"styleUrl": "#icon-ci-1",
 			"styleHash": "-1846bb07",
 			"description": "SPECIMEN TREE<br>Custis Tenement <br>Francis Street <br>Colonial Williamsburg Foundation's <br>Historic Area <br>State Champion<br>Nominated by Heritage Tree Committee<br>Designated 6.10.10",
-			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=791"
+			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=791",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -193,7 +291,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "SPECIMEN TREE<br>Basset Hall <br>Colonial Williamsburg Foundation's <br>Historic Area<br>Nominated by Heritage Tree Committee<br>Designated 6.10.10",
-			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=788"
+			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=788",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -206,7 +311,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "HERITAGE TREE <br>Custis Square <br>Colonial Williamsburg Foundation's <br>Historic Area <br>Nominated by Heritage Tree Committee<br>Designated 6.10.10",
-			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=781"
+			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=781",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -219,7 +331,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "SPECIMEN TREE<br>Custis Square <br>Colonial Williamsburg Foundation's <br>Historic Area <br>Nominated by Heritage Tree Committee<br>Designated 6.10.10",
-			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=790"
+			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=790",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}, {
 		"type": "Feature",
@@ -232,7 +351,14 @@
 			"styleUrl": "#icon-145",
 			"styleHash": "4d09cf07",
 			"description": "SPECIMEN TREE <br>Custis Square <br>Colonial Williamsburg Foundation's <br>Historic Area<br>Nominated by Historic Tree Committee<br>Designated 6.10.10",
-			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=780"
+			"gx_media_links": "http://williamsburgva.gov/Modules/ShowImage.aspx?imageid=780",
+			"icon": {
+				"iconUrl": "img/mapicon.png",
+				"iconSize": [30, 38.51],
+				"iconAnchor": [15, 38.51],
+				"popupAnchor": [0, -38.51],
+				"className": "dot"
+			}
 		}
 	}]
 }
