@@ -39,12 +39,41 @@ map.on('locationfound', function(e) {
     // And hide the geolocation button
 });
 
-// If the user chooses not to allow their location
-// to be shared, display an error message.
-map.on('locationerror', function() {
-    geolocate.innerHTML = 'Position could not be found';
-});
 $.getJSON("william-and-mary-notable-trees-map.geojson", function(data) {
-  L.mapbox.featureLayer(data).addTo(map);
+  L.mapbox.featureLayer(data);
 });
+
+var layers = document.getElementById('menu-ui');
+addLayer(L.mapbox.tileLayer('examples.bike-lanes'), 'Bike Lanes', 2);
+addLayer(L.mapbox.tileLayer('examples.bike-locations'), 'Bike Stations', 3);
+
+function addLayer(layer, name, zIndex) {
+    layer
+        .setZIndex(zIndex)
+        .addTo(map);
+
+    // Create a simple layer switcher that
+    // toggles layers on and off.
+    var link = document.createElement('a');
+        link.href = '#';
+        link.className = 'active';
+        link.innerHTML = name;
+
+    link.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (map.hasLayer(layer)) {
+            map.removeLayer(layer);
+            this.className = '';
+        } else {
+            map.addLayer(layer);
+            this.className = 'active';
+        }
+    };
+
+    layers.appendChild(link);
+}
+
+
 });
