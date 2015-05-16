@@ -2,3 +2,7 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoibmlrZXQiLCJhIjoiY2NJM1RkZyJ9.yrIhCrWderoS8-l1dluHEw';
 // Create a map in the div #map
 var map = L.mapbox.map('map', 'niket.895829ed');
+
+$.getJSON("william-and-mary-notable-trees-map.geojson", function(data) {
+  L.mapbox.featureLayer(data).addTo(map);
+});
