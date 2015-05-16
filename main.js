@@ -4,16 +4,13 @@ $(document).ready(function() {
     L.mapbox.accessToken = 'pk.eyJ1Ijoic2hlbGRvbmxpbmUiLCJhIjoiRVRIYlNIYyJ9.3hMiE63z6mxyBBPe1-mxiQ';
 
 
-    var map = L.mapbox.map('map', 'sheldonline.m6mg14f5', {
+    var map = L.mapbox.map('map', 'sheldonline.ca9ee452', {
         zoomControl: false
-    }).addControl(L.mapbox.geocoderControl('mapbox.places', {
-        keepOpen: true,
-        autocomplete: true
-    }));
+    });
 
 
     new L.Control.Zoom({
-        position: 'bottomright'
+        position: 'topright'
     }).addTo(map);
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -67,7 +64,7 @@ $(document).ready(function() {
         if (data.lbounds) {
             map.fitBounds(data.lbounds);
         } else if (data.latlng) {
-            map.setView([data.latlng[0], data.latlng[1]], 13);
+            map.setView([data.latlng[0], data.latlng[1]], 16);
         }
     }
 

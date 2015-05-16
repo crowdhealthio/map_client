@@ -30,6 +30,9 @@
     max-width: none;
     min-width: 0px;
     }
+    #search {
+      position:absolute; top:100; left:0; margin: 20px; padding: 5px; z-index: 60000000; width: 300px; text-size: 20px;
+    }
     </style>
   </head>
   <body>
@@ -65,12 +68,12 @@
     padding-right: 0;
     }
     .ui-button {
-    background:#3887BE;
+    background:#0071BB;
     color:#FFF;
     display:block;
     position:absolute;
     top:50%;left:50%;
-    width:160px;
+    width:250px;
     margin:-20px 0 0 -80px;
     z-index:100;
     text-align:center;
@@ -85,39 +88,38 @@
     .menu-ui {
     background:#fff;
     position:absolute;
-    top:10px;right:10px;
+    top:50px;left:0px;
+    margin: 20px;
     z-index:1;
-    border-radius:3px;
-    width:120px;
-    border:1px solid rgba(0,0,0,0.4);
+    width:300px;
     }
     .menu-ui a {
+      background: #0071BB;
     font-size:13px;
-    color:#404040;
+    color:#fff;
     display:block;
     margin:0;padding:0;
     padding:10px;
     text-decoration:none;
-    border-bottom:1px solid rgba(0,0,0,0.25);
     text-align:center;
+    font-weight: bold;
+    border:1px solid rgba(255,255,255,0.4);
     }
     .menu-ui a:first-child {
-    border-radius:3px 3px 0 0;
     }
     .menu-ui a:last-child {
     border:none;
-    border-radius:0 0 3px 3px;
     }
     .menu-ui a:hover {
     background:#f8f8f8;
     color:#404040;
     }
     .menu-ui a.active {
-    background:#3887BE;
+    background:#0071BB;
     color:#FFF;
     }
     .menu-ui a.active:hover {
-    background:#3074a4;
+    background:#0071BB;
     }
     </style>
     <div class="main">
@@ -127,12 +129,10 @@
         </div>
       </div>
       <div class="row fullwidth full-height nopad">
-        <div class="large-11 columns mapbox full-height nopad">
+        <div class="large-12 columns mapbox full-height nopad">
           <div id='map'></div>
         <nav id='menu-ui' class='menu-ui'></nav>
-      </div>
-      <div class="large-1 columns">
-        <input type='text' oninput='geocodeThis()' id='search' placeholder="Search for Anything!">
+        <input type='text' oninput='geocodeThis()' id='search' placeholder="Search">
       </div>
     </div>
   </div>
