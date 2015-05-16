@@ -4,8 +4,8 @@ $( document ).ready(function() {
   L.mapbox.accessToken = 'pk.eyJ1Ijoic2hlbGRvbmxpbmUiLCJhIjoiRVRIYlNIYyJ9.3hMiE63z6mxyBBPe1-mxiQ';
 
 
-var map = L.mapbox.map('map', 'sheldonline.10ac597b', {zoomControl: false}).addControl(L.mapbox.geocoderControl('mapbox.places',{
-        keepOpen: true
+var map = L.mapbox.map('map', 'sheldonline.m6mg14f5', {zoomControl: false}).addControl(L.mapbox.geocoderControl('mapbox.places',{
+        keepOpen: true, autocomplete: true
     }));
 
 
@@ -17,11 +17,11 @@ var myLayer = L.mapbox.featureLayer().addTo(map);
         e.preventDefault();
         e.stopPropagation();
         map.locate();
-
 }
 
 map.on('locationfound', function(e) {
     map.fitBounds(e.bounds);
+    map.setZoom(17);
 
     myLayer.setGeoJSON({
         type: 'Feature',
@@ -87,5 +87,7 @@ function addLayer(layer, name, zIndex) {
     layers.appendChild(link);
 }
 
+// $(document).foundation();
+// $(".full-height").height($(".main").parent().height());
 
 });
