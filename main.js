@@ -40,12 +40,24 @@ map.on('locationfound', function(e) {
 });
 
 $.getJSON("william-and-mary-notable-trees-map.geojson", function(data) {
-  L.mapbox.featureLayer(data);
+  // L.mapbox.featureLayer(data);
+  addLayer(L.mapbox.featureLayer(data), 'Notable Trees', 2);
 });
 
+$.getJSON("water-features.geojson", function(data) {
+  // L.mapbox.featureLayer(data);
+  addLayer(L.mapbox.featureLayer(data), 'Water Features', 3);
+});
+
+$.getJSON("http://crowdhealth.herokuapp.com/api/v1/artifacts", function(data) {
+  // L.mapbox.featureLayer(data);
+  addLayer(L.mapbox.featureLayer(data), 'Test', 4);
+});
+
+
 var layers = document.getElementById('menu-ui');
-addLayer(L.mapbox.tileLayer('examples.bike-lanes'), 'Bike Lanes', 2);
-addLayer(L.mapbox.tileLayer('examples.bike-locations'), 'Bike Stations', 3);
+// addLayer(L.mapbox.tileLayer('examples.bike-lanes'), 'Bike Lanes', 2);
+// addLayer(L.mapbox.tileLayer('examples.bike-locations'), 'Bike Stations', 3);
 
 function addLayer(layer, name, zIndex) {
     layer
