@@ -9,7 +9,7 @@ var map = L.mapbox.map('map', 'sheldonline.10ac597b', {zoomControl: false}).addC
     }));
 
 
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
+new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
 
 var myLayer = L.mapbox.featureLayer().addTo(map);
 
