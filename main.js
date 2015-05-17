@@ -38,18 +38,40 @@ $(document).ready(function() {
             }
         });
 
+        findFeaturesAroundCoordinate(e.latlng.lng, e.latlng.lat);
         // And hide the geolocation button
     });
 
-    var myIcon = L.icon({
-        iconUrl: 'img/mapicon.png',
-        iconRetinaUrl: 'img/mapicon.png',
-        iconSize: [30, 38.51],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76],
-        shadowSize: [68, 95],
-        shadowAnchor: [22, 94]
-    });
+
+    var findFeaturesAroundCoordinate = function(lng, lat) {
+        $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types", function(types) {
+            $(types).each(function(index, type) {
+                $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name + "/nearest/?lat=" + lat + "&lng=" + lng + "&distance=2", function(data) {
+                    var featureLayer = L.mapbox.featureLayer();
+                    for (var i = 0; i < data.features.length; i++) {
+                        var properties = data.features[i].properties;
+                        properties.icon = {
+                            "iconUrl": "img/" + type.name + ".png",
+                            "iconSize": [30, 38.51],
+                            "iconAnchor": [15, 38.51],
+                            "popupAnchor": [0, -38.51],
+                            "className": "dot"
+                        }
+                    };
+
+                    // Set a custom icon on each marker based on feature properties.
+                    featureLayer.on('layeradd', function(e) {
+                        var marker = e.layer,
+                            feature = marker.feature;
+                        marker.setIcon(L.icon(feature.properties.icon));
+                    });
+
+                    featureLayer.setGeoJSON(data);
+                    addLayer(featureLayer, type.name, index + 2);
+                })
+            });
+        });
+    };
 
     var geocoder = L.mapbox.geocoder('mapbox.places');
 
@@ -68,34 +90,33 @@ $(document).ready(function() {
         }
     }
 
-    $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types", function(types) {
-        console.log(types);
-        $(types).each(function(index, type) {
-            $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name, function(data) {
-                var featureLayer = L.mapbox.featureLayer();
-                for (var i = 0; i < data.features.length; i++) {
-                    var properties = data.features[i].properties;
-                    properties.icon = {
-                        "iconUrl": "img/" + type.name + ".png",
-                        "iconSize": [30, 38.51],
-                        "iconAnchor": [15, 38.51],
-                        "popupAnchor": [0, -38.51],
-                        "className": "dot"
-                    }
-                };
+    // $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types", function(types) {
+    //     $(types).each(function(index, type) {
+    //         $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name, function(data) {
+    //             var featureLayer = L.mapbox.featureLayer();
+    //             for (var i = 0; i < data.features.length; i++) {
+    //                 var properties = data.features[i].properties;
+    //                 properties.icon = {
+    //                     "iconUrl": "img/" + type.name + ".png",
+    //                     "iconSize": [30, 38.51],
+    //                     "iconAnchor": [15, 38.51],
+    //                     "popupAnchor": [0, -38.51],
+    //                     "className": "dot"
+    //                 }
+    //             };
 
-                // Set a custom icon on each marker based on feature properties.
-                featureLayer.on('layeradd', function(e) {
-                    var marker = e.layer,
-                        feature = marker.feature;
-                    marker.setIcon(L.icon(feature.properties.icon));
-                });
-                
-                featureLayer.setGeoJSON(data);
-                addLayer(featureLayer, type.name, index + 2);
-            })
-        });
-    });
+    //             // Set a custom icon on each marker based on feature properties.
+    //             featureLayer.on('layeradd', function(e) {
+    //                 var marker = e.layer,
+    //                     feature = marker.feature;
+    //                 marker.setIcon(L.icon(feature.properties.icon));
+    //             });
+
+    //             featureLayer.setGeoJSON(data);
+    //             addLayer(featureLayer, type.name, index + 2);
+    //         })
+    //     });
+    // });
 
 
     var layers = document.getElementById('menu-ui');
