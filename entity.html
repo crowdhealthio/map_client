@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <!-- If you delete this meta tag World War Z will become a reality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHS Map</title>
+    <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+    <style>
+    html, body
+    {
+    height: 100% !important;
+    padding: 0px;
+    margin:0;
+    color: #0B0C0C;
+    }
+    .full-height
+    {
+    display:table;
+    }
+    .full-height-panel
+    {
+    display:table-cell;
+    }
+    #map { position:absolute; top:0; bottom:0; width:100%; height:900px; margin: 0px; padding: 0px;}
+    #map img {
+    max-width: none;
+    min-width: 0px;
+    }
+    #search {
+      position:absolute; top:100; left:0; margin: 20px; padding: 5px; z-index: 60000000; width: 300px; text-size: 20px;
+    }
+    </style>
+  </head>
+  <body>
+    <style>
+    .nopad {
+    margin: 0;
+    padding: 0;
+    }
+    .topbar {
+    color: #fff;
+font-size: 20px;
+
+    }
+.wrapper {
+  width: 100% !important;
+  background-color: #0071BB;
+
+z-index: 0;
+}
+.wrapperbottom {
+  width: 100% !important;
+  background-color: #DEE0E2;
+padding-top: 40px;
+padding-bottom: 40px;
+
+z-index: 0;
+}
+    .topbar .logo{
+    height: 35px;
+    margin-top: 15px;
+    margin-bottom:15px;
+    margin-right: 10px;
+    margin-left: 0px;
+    vertical-align: middle;
+
+
+    }
+    .fullwidth {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
+    padding-left: 0;
+    padding-right: 0;
+    }
+    .ui-button {
+    background:#0071BB;
+    color:#FFF;
+    display:block;
+    position:absolute;
+    top:50%;left:50%;
+    width:250px;
+    margin:-20px 0 0 -80px;
+    z-index:100;
+    text-align:center;
+    padding:10px;
+    border:1px solid rgba(0,0,0,0.4);
+    border-radius:3px;
+    }
+    .ui-button:hover {
+    background:#3074a4;
+    color:#fff;
+    }
+    .menu-ui {
+    background:#fff;
+    position:absolute;
+    top:50px;left:0px;
+    margin: 20px;
+    z-index:1;
+    width:300px;
+    }
+    .menu-ui a {
+      background: #fff;
+    font-size:13px;
+    color:#0071BB;
+    display:block;
+    margin:0;padding:0;
+    padding:10px;
+    text-decoration:none;
+    text-align:center;
+    font-weight: bold;
+    border:1px solid rgba(255,255,255,0.4);
+    }
+    .menu-ui a:first-child {
+    }
+    .menu-ui a:last-child {
+    border:none;
+    }
+
+    .menu-ui a {
+      background: #579ef7;
+    }
+
+    /*.menu-ui a:hover {
+    background:#f8f8f8;
+    color:#404040;
+    }*/
+    .menu-ui a.active {
+    background:#0071BB;
+    color:#FFF;
+    }
+    .menu-ui a.active:hover {
+    background:#59a3ff;
+    }
+
+    h1 {
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top:0px;
+    padding-bottom: 0px;
+    color: #0B0C0C;
+    }
+    .bread {
+      padding-top: 10px;
+      padding-bottom: 30px;
+
+    }
+    .bread a {
+      color: #0B0C0C;
+      text-decoration: underline;
+    }
+    .bread a:hover {
+      text-decoration: none;
+    }
+    h4.subheader {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+    .stats {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .stats h2 {
+      font-weight: bold;
+      font-size: 80px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      line-height: 80px;
+    }
+    .stats .sub {
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 0px;
+      padding-top: 0px;
+      line-height: 16px;
+    }
+    .good {
+      font-weight: bold;
+      color: #00823B;
+    }
+    .bad {
+      font-weight: bold;
+      color: #AF1324;
+    }
+    </style>
+    <div class="main">
+      <div class="wrapper">
+      <div class="row topbar">
+        <div class="large-12 columns">
+       <img src="img/nhslogo.png" class="logo"/>Find a service
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+
+      <p class="bread"><a href="#">Find a service</a> &gt; <a href="#">King's College Hospital</a></p>
+</div>
+</div>
+      <div class="row">
+        <div class="large-8 columns">
+<h1>King's College Hospital</h1>
+<h4 class="subheader">Hospital</h4>
+<p>King's College Hospital<br/>
+Denmark Hill<br/>
+London<br/>
+SE5 9RS</p>
+<h4>This hospital is <span class="bad">closed until 9AM tomorrow</span>.</h4>
+<h4>This hospital is rated as <a href="#" class="good">excellent</a> by CQC.</h4>
+<h4>This hospital <span class="good">has an emergency department.</span></h4>
+
+      </div>
+      <div class="large-4 columns">
+        <iframe width='100%' height='350px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/sheldonline.m730lkg0/attribution,zoompan,zoomwheel,share.html?access_token=pk.eyJ1Ijoic2hlbGRvbmxpbmUiLCJhIjoiRVRIYlNIYyJ9.3hMiE63z6mxyBBPe1-mxiQ'></iframe></div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 columns">
+
+
+      </div>
+
+      </div>
+    <div class="row stats">
+      <div class="large-4 columns">
+        <h2>24%</h2>
+        <p class="sub">of patients would recommend <br/>to their friends and family</p>
+      </div>
+      <div class="large-4 columns">
+        <h2>43.8</h2>
+        <p class="sub">Average length of stay</p>
+
+      </div>
+      <div class="large-4 columns">
+        <h2>11.69</h2>
+        <p class="sub">Cost of food services</p>
+
+      </div>
+      </div>
+
+    <div class="wrapperbottom">
+    <div class="row">
+      <div class="large-12 columns">
+        <p>The unique web location for this hospital is <a href="http://data.nhs.uk/hospitals/1134">http://data.nhs.uk/hospitals/1134</a><br/>Download as <a href="#">JSON</a>, <a href="#">CSV</a>, <a href="#">XML</a></p>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="js/vendor/modernizr.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</body>
+</html>
