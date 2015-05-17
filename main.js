@@ -64,7 +64,7 @@ $(document).ready(function() {
         if (data.lbounds) {
             map.fitBounds(data.lbounds);
         } else if (data.latlng) {
-            map.setView([data.latlng[0], data.latlng[1]], 16);
+            map.setView([data.latlng[0], data.latlng[1]], 13);
         }
     }
 
