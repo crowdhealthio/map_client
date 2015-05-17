@@ -52,9 +52,8 @@ $(document).ready(function() {
     });
 
     window.routeTo = function(lat, lng) {
-        console.log("here");
         $.getJSON("http://api.tiles.mapbox.com/v4/directions/mapbox.walking/" + currentLocation.geometry.coordinates[0] + "," + currentLocation.geometry.coordinates[1] + ";" + lng + "," + lat + ".json?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q", function(response) {
-            console.log(response);
+            
             routeLayer = L.mapbox.featureLayer();
             var features = {
                 type: "FeatureCollection",
@@ -63,7 +62,6 @@ $(document).ready(function() {
                     geometry: response.routes[0].geometry
                 }]
             };
-            console.log(features);
             routeLayer.setGeoJSON(features);
             map.addLayer(routeLayer);
         });
