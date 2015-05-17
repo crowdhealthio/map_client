@@ -5,7 +5,9 @@ $(document).ready(function() {
 
 
     var map = L.mapbox.map('map', 'sheldonline.ca9ee452', {
-        zoomControl: false
+        zoomControl: false,
+        maxZoom: 20,
+        minZoom: 13
     });
 
 
@@ -14,6 +16,8 @@ $(document).ready(function() {
     }).addTo(map);
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
+
+    var featureLayers = [];
 
     window.onload = function(e) {
         e.preventDefault();
@@ -38,16 +42,40 @@ $(document).ready(function() {
             }
         });
 
-        findFeaturesAroundCoordinate(e.latlng.lng, e.latlng.lat);
+        findFeaturesAroundCoordinate(e.latlng.lng, e.latlng.lat, map.getZoom());
         // And hide the geolocation button
     });
 
+    map.on("zoomend", function(e) {
+        var latlng = map.getCenter();
+        findFeaturesAroundCoordinate(latlng.lng, latlng.lat, map.getZoom());
+    });
 
-    var findFeaturesAroundCoordinate = function(lng, lat) {
+    var typesLoaded = false;
+
+    var zoomLevelToRadius = function(zoomLevel) {
+        return Math.exp(80 / zoomLevel) / zoomLevel;
+    }
+
+    var findFeaturesAroundCoordinate = function(lng, lat, zoomLevel) {
         $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types", function(types) {
             $(types).each(function(index, type) {
-                $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name + "/nearest/?lat=" + lat + "&lng=" + lng + "&distance=2", function(data) {
-                    var featureLayer = L.mapbox.featureLayer();
+                $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name + "/nearest/?lat=" + lat + "&lng=" + lng + "&distance=" + zoomLevelToRadius(zoomLevel), function(data) {
+                    var featureLayer;
+                    console.log(featureLayers);
+                    console.log(typesLoaded);
+                    if (typesLoaded) {
+                        for (var i = featureLayers.length - 1; i >= 0; i--) {
+                            if (featureLayers[i].type === type.name) {
+                                featureLayer = featureLayers[i];
+                            }
+                        };
+                    } else {
+                        featureLayer = L.mapbox.featureLayer();
+                        featureLayer.type = type.name;
+                        featureLayers.push(featureLayer);
+                    }
+
                     for (var i = 0; i < data.features.length; i++) {
                         var properties = data.features[i].properties;
                         properties.icon = {
@@ -59,15 +87,19 @@ $(document).ready(function() {
                         }
                     };
 
-                    // Set a custom icon on each marker based on feature properties.
-                    featureLayer.on('layeradd', function(e) {
-                        var marker = e.layer,
-                            feature = marker.feature;
-                        marker.setIcon(L.icon(feature.properties.icon));
-                    });
-
+                    if (!typesLoaded) {
+                        // Set a custom icon on each marker based on feature properties.
+                        featureLayer.on('layeradd', function(e) {
+                            var marker = e.layer,
+                                feature = marker.feature;
+                            marker.setIcon(L.icon(feature.properties.icon));
+                        });
+                        addLayer(featureLayer, type.name, index + 2);
+                    }
                     featureLayer.setGeoJSON(data);
-                    addLayer(featureLayer, type.name, index + 2);
+                    if (!typesLoaded) {
+                        typesLoaded = types.length - 1 === index;
+                    }
                 })
             });
         });
@@ -130,7 +162,7 @@ $(document).ready(function() {
         // toggles layers on and off.
         var link = document.createElement('a');
         link.href = '#';
-        link.className = 'active';
+        link.className = 'active ' + name;
         link.innerHTML = name;
 
         link.onclick = function(e) {
