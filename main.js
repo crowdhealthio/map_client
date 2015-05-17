@@ -28,7 +28,7 @@ $(document).ready(function() {
 
     map.on('locationfound', function(e) {
         map.fitBounds(e.bounds);
-        map.setZoom(14);
+        map.setZoom(13);
 
         currentLocation = {
             type: 'Feature',
@@ -50,9 +50,7 @@ $(document).ready(function() {
     });
 
     window.routeTo = function(feature) {
-        console.log("here");
         $.getJSON("https://www.mapbox.com/developers/api/directions/mapbox.walking/" + currentLocation.geometry.coordinates[0] + "," + currentLocation.geometry.coordinates[1] + ";" + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + ".json/?access_token=pk.eyJ1Ijoic2hlbGRvbmxpbmUiLCJhIjoiRVRIYlNIYyJ9.3hMiE63z6mxyBBPe1-mxiQ", function(response) {
-            console.log(response);
         });
     };
 
@@ -72,8 +70,6 @@ $(document).ready(function() {
             $(types).each(function(index, type) {
                 $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.id + "/artifacts/?lat=" + lat + "&lng=" + lng + "&distance=" + zoomLevelToRadius(zoomLevel), function(data) {
                     var featureLayer;
-                    console.log(featureLayers);
-                    console.log(typesLoaded);
                     if (typesLoaded) {
                         for (var i = featureLayers.length - 1; i >= 0; i--) {
                             if (featureLayers[i].type === type.name) {
@@ -96,7 +92,7 @@ $(document).ready(function() {
                             "popupAnchor": [0, -38.51],
                             "className": "dot"
                         }
-                        properties.description += "\u003cbr\u003e \u003ca  data-lat=\"" + feature.geometry.coordinates[1] + "\" data-lng=\"" + feature.geometry.coordinates[0] + "\" class=\"button small\" \u003e Get me here  \u003c/button\u003e"
+                        properties.description += "\u003cbr\u003e \u003ca \" data-lat=\"" + feature.geometry.coordinates[1] + "\" data-lng=\"" + feature.geometry.coordinates[0] + "\" class=\"button small\" \u003e Get me here  \u003c/button\u003e"
                     };
 
                     if (!typesLoaded) {
@@ -135,35 +131,6 @@ $(document).ready(function() {
             map.setView([data.latlng[0], data.latlng[1]], 13);
         }
     }
-
-    // $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types", function(types) {
-    //     $(types).each(function(index, type) {
-    //         $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name, function(data) {
-    //             var featureLayer = L.mapbox.featureLayer();
-    //             for (var i = 0; i < data.features.length; i++) {
-    //                 var properties = data.features[i].properties;
-    //                 properties.icon = {
-    //                     "iconUrl": "img/" + type.name + ".png",
-    //                     "iconSize": [30, 38.51],
-    //                     "iconAnchor": [15, 38.51],
-    //                     "popupAnchor": [0, -38.51],
-    //                     "className": "dot"
-    //                 }
-    //             };
-
-    //             // Set a custom icon on each marker based on feature properties.
-    //             featureLayer.on('layeradd', function(e) {
-    //                 var marker = e.layer,
-    //                     feature = marker.feature;
-    //                 marker.setIcon(L.icon(feature.properties.icon));
-    //             });
-
-    //             featureLayer.setGeoJSON(data);
-    //             addLayer(featureLayer, type.name, index + 2);
-    //         })
-    //     });
-    // });
-
 
     var layers = document.getElementById('menu-ui');
 
