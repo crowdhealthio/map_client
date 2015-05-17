@@ -24,11 +24,12 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
         map.locate();
-    }
+    };
 
     map.on('locationfound', function(e) {
-        map.fitBounds(e.bounds);
-        map.setZoom(13);
+        map.fitBounds(e.bounds, {
+            maxZoom : 16
+        });
 
         currentLocation = {
             type: 'Feature',
