@@ -96,7 +96,7 @@ $(document).ready(function() {
                             "popupAnchor": [0, -38.51],
                             "className": "dot"
                         }
-                        properties.description += "\u003cbr\u003e \u003ca  data-lat=\"" + features.geometry.coordinates[1] + "\" data-lng=\"" + features.geometry.coordinates[0] + "\" class=\"button small\" \u003e Get me here  \u003c/button\u003e"
+                        properties.description += "\u003cbr\u003e \u003ca  data-lat=\"" + feature.geometry.coordinates[1] + "\" data-lng=\"" + feature.geometry.coordinates[0] + "\" class=\"button small\" \u003e Get me here  \u003c/button\u003e"
                     };
 
                     if (!typesLoaded) {
