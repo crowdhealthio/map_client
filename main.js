@@ -10,6 +10,7 @@ $(document).ready(function() {
         minZoom: 13
     });
 
+    var currentLocation;
 
     new L.Control.Zoom({
         position: 'topright'
@@ -27,9 +28,9 @@ $(document).ready(function() {
 
     map.on('locationfound', function(e) {
         map.fitBounds(e.bounds);
-        map.setZoom(17);
+        map.setZoom(14);
 
-        myLayer.setGeoJSON({
+        currentLocation = {
             type: 'Feature',
             geometry: {
                 type: 'Point',
@@ -40,11 +41,20 @@ $(document).ready(function() {
                 'marker-color': '#ff8888',
                 'marker-symbol': 'star'
             }
-        });
+        };
+
+        myLayer.setGeoJSON(currentLocation);
 
         findFeaturesAroundCoordinate(e.latlng.lng, e.latlng.lat, map.getZoom());
         // And hide the geolocation button
     });
+
+    window.routeTo = function(feature) {
+        console.log("here");
+        $.getJSON("https://www.mapbox.com/developers/api/directions/mapbox.walking/" + currentLocation.geometry.coordinates[0] + "," + currentLocation.geometry.coordinates[1] + ";" + feature.geometry.coordinates[0] + "," + feature.geometry.coordinates[1] + ".json/?access_token=pk.eyJ1Ijoic2hlbGRvbmxpbmUiLCJhIjoiRVRIYlNIYyJ9.3hMiE63z6mxyBBPe1-mxiQ", function(response) {
+            console.log(response);
+        });
+    };
 
     map.on("zoomend", function(e) {
         var latlng = map.getCenter();
@@ -60,7 +70,7 @@ $(document).ready(function() {
     var findFeaturesAroundCoordinate = function(lng, lat, zoomLevel) {
         $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types", function(types) {
             $(types).each(function(index, type) {
-                $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.name + "/nearest/?lat=" + lat + "&lng=" + lng + "&distance=" + zoomLevelToRadius(zoomLevel), function(data) {
+                $.getJSON("http://crowdhealth.herokuapp.com/api/v1/types/" + type.id + "/artifacts/?lat=" + lat + "&lng=" + lng + "&distance=" + zoomLevelToRadius(zoomLevel), function(data) {
                     var featureLayer;
                     console.log(featureLayers);
                     console.log(typesLoaded);
@@ -77,7 +87,8 @@ $(document).ready(function() {
                     }
 
                     for (var i = 0; i < data.features.length; i++) {
-                        var properties = data.features[i].properties;
+                        var feature = data.features[i];
+                        var properties = feature.properties;
                         properties.icon = {
                             "iconUrl": "img/" + type.name + ".png",
                             "iconSize": [30, 38.51],
@@ -85,6 +96,7 @@ $(document).ready(function() {
                             "popupAnchor": [0, -38.51],
                             "className": "dot"
                         }
+                        properties.description += "\u003cbr\u003e \u003ca  data-lat=\"" + features.geometry.coordinates[1] + "\" data-lng=\"" + features.geometry.coordinates[0] + "\" class=\"button small\" \u003e Get me here  \u003c/button\u003e"
                     };
 
                     if (!typesLoaded) {
@@ -96,7 +108,9 @@ $(document).ready(function() {
                         });
                         addLayer(featureLayer, type.name, index + 2);
                     }
-                    featureLayer.setGeoJSON(data);
+                    if (featureLayer) {
+                        featureLayer.setGeoJSON(data);
+                    }
                     if (!typesLoaded) {
                         typesLoaded = types.length - 1 === index;
                     }
